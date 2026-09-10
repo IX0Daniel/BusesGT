@@ -28,7 +28,7 @@ public class ConexionDB {
         }
         
         return null;   
-        //return DriverManager.getConnection(URL, USERNAME, PASSWORD);
+        
     }
     
     

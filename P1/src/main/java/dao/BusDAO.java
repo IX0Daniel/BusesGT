@@ -14,7 +14,7 @@ import model.Bus;
  */
 public class BusDAO {
     
-    public Bus create(String numeroPlaca, String rutaFoto, String marca, String modelo, int año, int capacidad, double kilometraje, String estado, int codigoSucursal, int codigoSucursalActual) throws SQLException {
+    public void crear(String numeroPlaca, String rutaFoto, String marca, String modelo, int año, int capacidad, double kilometraje, String estado, int codigoSucursal, int codigoSucursalActual) throws SQLException {
         String sql = "INSERT INTO bus (numero_placa, ruta_foto, marca, modelo, año, capacidad, kilometraje, estado, codigo_sucursal, codigo_sucural_actual) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (Connection con = ConexionDB.getConnection();
@@ -32,18 +32,19 @@ public class BusDAO {
             ps.setInt(10, codigoSucursalActual);
  
             ps.executeUpdate();
-            return new Bus(numeroPlaca, rutaFoto, marca, modelo, año, capacidad, kilometraje, estado, codigoSucursal, codigoSucursalActual);
-            
-        }catch (SQLException e) {
+             
+        }
+        /*catch (SQLException e) {
             System.err.println("Error al crear bus: " + e.getMessage());
             return null;
         }
+        */
     }
     
      
     
     
-     public List<Bus> getAll() throws Exception {
+     public List<Bus> obtenerTodo() throws Exception {
 
         List<Bus> lista = new ArrayList<>();
 

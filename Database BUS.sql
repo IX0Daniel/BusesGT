@@ -29,10 +29,8 @@ CREATE TABLE bus(
     codigo_sucursal_actual INT NOT NULL, 
 
     CONSTRAINT fk_bus_sucursal_actual
-        FOREIGN KEY (ubicacion) 
+        FOREIGN KEY (codigo_sucursal_actual) 
         REFERENCES sucursal(codigo_sucursal)
-
-
 
 );
 
@@ -40,7 +38,7 @@ CREATE TABLE usuario(
     correo VARCHAR(20) UNIQUE PRIMARY KEY,
     contraseña VARCHAR(20) NOT NULL,
     rol ENUM('usuario', 'chofer', 'administrador-sucursal', 'administrador') NOT NULL,
-    estado ENUM('activo', 'inhabilitado') NOT NULL,
+    estado ENUM('activo', 'inhabilitado') NOT NULL
 );
 
 CREATE TABLE perfil_usuario(
@@ -68,7 +66,7 @@ CREATE TABLE chofer(
     fecha_vencimiento DATE NOT NULL,
 
     salario DECIMAL(10, 2) DEFAULT 0.00,
-    codigo_sucursal VARCHAR(20) NOT NULL,
+    codigo_sucursal INT NOT NULL,
 
     CONSTRAINT fk_chofer_sucursal
         FOREIGN KEY(codigo_sucursal)
@@ -97,9 +95,9 @@ CREATE TABLE ruta(
 );
 
 CREATE TABLE viaje(
-    id_viaje INT PRIMARY KEY NOT NULL,
-    numero_placa VARCHAR(15),
-    no_licencia VARCHAR(15),
+    id_viaje INT PRIMARY KEY AUTO_INCREMENT,
+    numero_placa VARCHAR(15) NOT NULL,
+    no_licencia VARCHAR(15) NOT NULL,
     fecha_hora_salida DATETIME NOT NULL,
     hora_estimada_llegada TIME NOT NULL,
     tipo_viaje ENUM('regular', 'privado') NOT NULL,
@@ -128,24 +126,18 @@ CREATE TABLE viaje_regular(
 ); 
 
 CREATE TABLE viaje_privado(
-    id_viaje INT NOT NULL,
-    codigo_sucursal INT NOT NULL,
-    codigo_sucursal_destino INT NOT NULL, 
-    cantidad_pasajeros INT DEFAULT 0,
+    id_viaje INT PRIMARY KEY,
+     
+    origen VARCHAR(150) NOT NULL,
+    destino VARCHAR(150) NOT NULL,
+    cantidad_pasajeros INT NOT NULL,
 
+ 
     CONSTRAINT fk_viaje_privado_viaje
         FOREIGN KEY (id_viaje) 
         REFERENCES viaje(id_viaje)
 
-    CONSTRAINT fk_viaje_privado_sucursal
-        FOREIGN KEY (codigo_sucursal) 
-        REFERENCES sucursal(codigo_sucursal),
-
-
-    CONSTRAINT fk_viaje_privado_sucursal_destino
-        FOREIGN KEY (codigo_sucursal_destino) 
-        REFERENCES sucursal(codigo_sucursal),
-
+    
 ); 
 
 
@@ -153,7 +145,7 @@ CREATE TABLE salida_viaje(
 
      
     id_viaje INT PRIMARY KEY,
-    dpi VARCHAR(15) NOT NULL, 
+    correo VARCHAR(20) NOT NULL, 
     fecha_hora_salida DATETIME NOT NULL,
     kilometraje_actual DECIMAL(10, 2) DEFAULT 0.00,
 
@@ -162,12 +154,10 @@ CREATE TABLE salida_viaje(
         FOREIGN KEY (id_viaje)
         REFERENCES viaje(id_viaje),
 
-    CONSTRAINT fk_salida_viaje_perfil_usuario
-        FOREIGN KEY (dpi) 
-        REFERENCES perfil_usuario(dpi),
-
+    CONSTRAINT fk_salida_viaje_usuario
+        FOREIGN KEY (correo) 
+        REFERENCES usuario(correo)
  
-    
 );
 
 CREATE TABLE llegada_viaje(
@@ -176,7 +166,7 @@ CREATE TABLE llegada_viaje(
     id_viaje INT NOT NULL,
     dpi VARCHAR(15) NOT NULL, 
     fecha_hora_llegada DATETIME NOT NULL,
-    kilometraje_actual DECIMAL(10, 2) DEFAULT 0.00,
+    kilometraje_final DECIMAL(10, 2) DEFAULT 0.00,
     gasto_combustible DECIMAL(10, 2) NOT NULL,
 
     CONSTRAINT fk_llegada_viaje_viaje
@@ -185,12 +175,9 @@ CREATE TABLE llegada_viaje(
 
     CONSTRAINT fk_llegada_viaje_perfil_usuario
         FOREIGN KEY (dpi) 
-        REFERENCES perfil_usuario(dpi),
+        REFERENCES perfil_usuario(dpi)
     
 );
-
-
-
 
 CREATE TABLE recarga_saldo (
 
@@ -208,4 +195,5 @@ CREATE TABLE recarga_saldo (
 
 
 CREATE TABLE solicitud_viaje_privado( 
+    id_solicitud INT PRIMARY KEY
 );
