@@ -1,4 +1,5 @@
 dao/BusDAO.class
+servlet/BusServlet.class
 model/Viaje.class
 model/Ususario.class
 dao/RutaDAO.class

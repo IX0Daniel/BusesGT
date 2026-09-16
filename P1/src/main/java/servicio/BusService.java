@@ -1,6 +1,11 @@
 package servicio;
 
 import dao.BusDAO;
+import dao.SucursalDAO;
+import java.sql.SQLException;
+import java.util.List;
+import model.Bus;
+import model.Sucursal;
 
 /*
  * @author dz
@@ -12,14 +17,30 @@ public class BusService {
 
     public BusService() {
         busDao = new BusDAO();
+    } 
+
+    public List<Bus> obtenerTodo() throws SQLException {
+        return busDao.obtenerTodo();
+    }
+
+    public Bus buscarPorPlaca(String numeroPlaca) throws SQLException {
+        return busDao.buscarPorPlaca(numeroPlaca);
+    }
+
+    public void crear(Bus bus) throws SQLException {
+        busDao.crear(bus);
+    }
+
+    public void actualizar(Bus bus) throws SQLException {
+        busDao.actualizar(bus);
     }
     
-    public void crearBus(){
+    public boolean verificarViajes(Bus bus) throws SQLException{
     
-        //busDao.create(numeroPlaca, rutaFoto, marca, modelo, 0, 0, 0, estado, 0, 0)
+        return busDao.verificarViajesPendientes(bus);
     
     }
-    
+ 
     
     
     

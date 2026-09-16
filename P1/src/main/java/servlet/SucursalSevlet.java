@@ -32,6 +32,8 @@ public class SucursalSevlet extends HttpServlet {
 
         String accion = request.getParameter("accion");
 
+        
+        System.out.println("Accion: " + accion);
         try {
 
             if (accion == null) {
@@ -90,7 +92,7 @@ public class SucursalSevlet extends HttpServlet {
     }
 
     private void mostrarFormularioNuevo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/Sucural/formulario.jsp").forward(request, response);
+        request.getRequestDispatcher("/Sucursal/formulario.jsp").forward(request, response);
     }
 
     private void mostrarFormularioEditar(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {

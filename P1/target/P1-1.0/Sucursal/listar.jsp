@@ -18,7 +18,8 @@
     <body>
 
         <h1>Sucursales Existentes</h1>
-
+        
+        
         <a href="${pageContext.request.contextPath}/sucursales?accion=nuevo">
             Nueva sucursal
         </a>
@@ -37,8 +38,7 @@
             <tbody>
 
                 <%
-                    List<Sucursal> sucursales
-                            = (List<Sucursal>) request.getAttribute("sucursales");
+                    List<Sucursal> sucursales = (List<Sucursal>) request.getAttribute("sucursales");
 
                     for (Sucursal sucursal : sucursales) {
                 %>
@@ -58,14 +58,10 @@
                               action="${pageContext.request.contextPath}/sucursales"
                               style="display:inline;">
 
-                            <input type="hidden"
-                                   name="accion"
-                                   value="eliminar">
+                            <input type="hidden" name="accion" value="eliminar">
 
-                            <input type="hidden"
-                                   name="id"
-                                   value="<%= sucursal.getCodigoSucursal()%>">
-
+                            <input type="hidden" name="id" value="<%= sucursal.getCodigoSucursal()%>">
+2
                             <button type="submit">
                                 Eliminar
                             </button>
