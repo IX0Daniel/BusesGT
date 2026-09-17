@@ -12,6 +12,7 @@ main/p1/resources/JakartaEE11Resource.class
 dao/SucursalDAO.class
 database/ConexionDB.class
 dao/SalidaViajeDAO.class
+servicio/RutaService.class
 dao/AdministradorSucursalDAO.class
 dao/PerfilUsuarioDAO.class
 servlet/ClienteServlet.class
@@ -22,6 +23,7 @@ servicio/UsuarioService.class
 dao/ViajeRegularDAO.class
 model/AdministradorSucursal.class
 model/SalidaViaje.class
+servlet/RutaServlet.class
 model/PerfilUsuario.class
 model/Bus.class
 dao/ViajeDAO.class
