@@ -55,9 +55,9 @@
         %>
 
             <tr>
-                <td> <%= ruta.getIdRuta() %></td>
+                <td> <%= ruta.getIdRuta()  %> </td>
 
-                <td><%= ruta.getCodigoSucursalOrigen() %></td>
+                <td><%= ruta.getCodigoSucursalOrigen() %> </td>
 
                 <td><%= ruta.getCodigoSucursalDestino() %></td>
 

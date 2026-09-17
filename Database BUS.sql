@@ -2,6 +2,8 @@ DROP DATABASE IF EXISTS BUS;
 CREATE DATABASE BUS;
 USE BUS;
 
+
+----------
 CREATE TABLE sucursal(
     codigo_sucursal INT PRIMARY KEY AUTO_INCREMENT,
     nombre VARCHAR(100) NOT NULL,
@@ -10,6 +12,8 @@ CREATE TABLE sucursal(
 
 );
 
+
+----------
 CREATE TABLE bus(
     numero_placa VARCHAR(15) PRIMARY KEY,
     ruta_foto VARCHAR(80) NOT NULL,
@@ -47,12 +51,22 @@ CREATE TABLE perfil_usuario(
     telefono VARCHAR(15) NOT NULL,
     direccion VARCHAR(100) NOT NULL,
     nombre_completo VARCHAR(80) NOT NULL,
-    saldo DECIMAL(10, 5) DEFAULT 0.00    
+    saldo DECIMAL(10, 5) DEFAULT 0.00,
+    correo VARCHAR(20) UNIQUE NOT NULL,
+    CONSTRAINT perfil_usuario_usuario
+        FOREIGN KEY (correo)
+        REFERENCES usuario(correo)
 );
 
+
 CREATE TABLE administrador_sucursal(
-    correo VARCHAR(20) PRIMARY KEY NOT NULL,
     codigo_sucursal INT NOT NULL,
+    correo VARCHAR(20) UNIQUE NOT NULL,
+
+    CONSTRAINT perfil_usuario_usuario
+        FOREIGN KEY (correo)
+        REFERENCES usuario(correo),
+
 
     CONSTRAINT administrador_sucursal_sucursal
         FOREIGN KEY (codigo_sucursal) 
@@ -67,6 +81,12 @@ CREATE TABLE chofer(
 
     salario DECIMAL(10, 2) DEFAULT 0.00,
     codigo_sucursal INT NOT NULL,
+    
+    correo VARCHAR(20) UNIQUE NOT NULL,
+
+    CONSTRAINT perfil_usuario_usuario
+        FOREIGN KEY (correo)
+        REFERENCES usuario(correo),
 
     CONSTRAINT fk_chofer_sucursal
         FOREIGN KEY(codigo_sucursal)
@@ -102,6 +122,14 @@ CREATE TABLE viaje(
     hora_estimada_llegada TIME NOT NULL,
     tipo_viaje ENUM('regular', 'privado') NOT NULL,
     estado ENUM('programado', 'en_curso', 'finalizado') NOT NULL,
+    id_ruta INT NOT NULL,
+    
+    -- espacios_bus INT,
+    -- espacios_ocupados INT
+
+    CONSTRAINT fk_viaje_ruta
+        FOREIGN KEY (id_ruta) 
+        REFERENCES ruta(id_ruta),
 
     CONSTRAINT fk_viaje_bus
         FOREIGN KEY (numero_placa) 

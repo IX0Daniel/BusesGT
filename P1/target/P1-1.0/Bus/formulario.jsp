@@ -76,7 +76,15 @@
                 <label>Estado:</label>
 
                 <% 
-                    boolean viajes = (boolean) request.getAttribute("viajes");
+                    
+                    boolean viajes;
+                    if(request.getAttribute("viajes")!= null){
+                        viajes = (boolean) request.getAttribute("viajes");
+                    }else{
+                        viajes = false;
+                    }
+                    
+                    
                     
                     if (viajes) {%>
 

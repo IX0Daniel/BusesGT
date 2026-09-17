@@ -4,14 +4,18 @@ package model;
  * @author dz
  */
 public class PerfilUsuario {
-   private String dpi;
-   private String nit;
-   private String telefono;
-   private String direccion;
-   private String nombreCompleto;
-   private double saldo;
 
-    public PerfilUsuario(String dpi, String nit, String telefono, String direccion, String nombreCompleto, double saldo) {
+    
+    private String correo;
+    private String dpi;
+    private String nit;
+    private String telefono;
+    private String direccion;
+    private String nombreCompleto;
+    private double saldo;
+
+    public PerfilUsuario(String correo, String dpi, String nit, String telefono, String direccion, String nombreCompleto, double saldo) {
+        this.correo = correo;
         this.dpi = dpi;
         this.nit = nit;
         this.telefono = telefono;
@@ -21,6 +25,14 @@ public class PerfilUsuario {
     }
 
     public PerfilUsuario() {
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
     }
 
     public String getDpi() {
@@ -70,7 +82,5 @@ public class PerfilUsuario {
     public void setSaldo(double saldo) {
         this.saldo = saldo;
     }
-   
-   
-   
+
 }

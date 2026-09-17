@@ -1,7 +1,9 @@
+model/Usuario.class
+servicio/ChoferService.class
 dao/BusDAO.class
 servlet/BusServlet.class
 model/Viaje.class
-model/Ususario.class
+servicio/PerfilUsuarioService.class
 dao/RutaDAO.class
 dao/ChoferDAO.class
 model/Chofer.class
@@ -9,12 +11,14 @@ dao/UsuarioDAO.class
 servicio/BusService.class
 main/p1/JakartaRestConfiguration.class
 main/p1/resources/JakartaEE11Resource.class
+servlet/UsuarioServlet.class
 dao/SucursalDAO.class
 database/ConexionDB.class
 dao/SalidaViajeDAO.class
 servicio/RutaService.class
 dao/AdministradorSucursalDAO.class
 dao/PerfilUsuarioDAO.class
+servlet/ViajeServlet.class
 servlet/ClienteServlet.class
 servicio/SucursalService.class
 servlet/SucursalSevlet.class
@@ -30,3 +34,4 @@ dao/ViajeDAO.class
 model/Ruta.class
 model/Sucursal.class
 servicio/ViajeService.class
+dto/PerfilUsuarioDTO.class
