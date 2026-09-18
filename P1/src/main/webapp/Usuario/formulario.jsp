@@ -35,177 +35,88 @@
         <form method="post"
               action="${pageContext.request.contextPath}/usuarios">
 
-            <input type="hidden"
-                   name="accion"
-                   value="<%= evento ? "actualizar" : "crear"%>">
+            <input type="hidden" name="accion" value="<%= evento ? "actualizar" : "crear"%>">
 
             <div>
 
-                <label for="correo">
-                    Correo:
-                </label>
+                <label for="correo">Correo:</label>
 
-                <input type="email"
-                       id="correo"
-                       name="correo"
-                       maxlength="20"
-                       value="<%= evento ? usuario.getCorreo() : ""%>"
-                       <%= evento ? "readonly" : "required"%>>
+                <input type="email" id="correo" name="correo" maxlength="20" value="<%= evento ? usuario.getCorreo() : ""%>" <%= evento ? "readonly" : "required"%>>
 
             </div>
+ 
 
+            <div>
+
+                <label for="contraseña"> Contraseña: </label>
+
+                <input type="password" id="contraseña" name="contraseña" maxlength="20" value="<%= evento ? usuario.getContraseña() : ""%>" required>
+
+            </div>
+ 
+            <div>
+
+                <label for="nombreCompleto"> Nombre completo: </label>
+
+                <input type="text" id="nombreCompleto" name="nombreCompleto" maxlength="80" value="<%= evento ? perfil.getNombreCompleto() : ""%>" required>
+ 
             <br>
 
             <div>
 
-                <label for="contraseña">
-                    Contraseña:
-                </label>
+                <label for="dpi"> DPI: </label>
 
-                <input type="password"
-                       id="contraseña"
-                       name="contraseña"
-                       maxlength="20"
-                       value="<%= evento ? usuario.getContraseña() : ""%>"
-                       required>
+                <input type="text" id="dpi" name="dpi" maxlength="15" value="<%= evento ? perfil.getDpi() : ""%>" required>
 
             </div>
-
-            <br>
+ 
 
             <div>
 
-                <label for="nombreCompleto">
-                    Nombre completo:
-                </label>
+                <label for="nit"> NIT: </label>
 
-                <input type="text"
-                       id="nombreCompleto"
-                       name="nombreCompleto"
-                       maxlength="80"
-                       value="<%= evento
-                               ? perfil.getNombreCompleto()
-                               : ""%>"
-                       required>
+                <input type="text" id="nit" name="nit" maxlength="15" value="<%= evento ? perfil.getNit() : ""%>" required>
 
             </div>
-
-            <br>
-
+    
             <div>
 
-                <label for="dpi">
-                    DPI:
-                </label>
+                <label for="telefono"> Teléfono:</label>
 
-                <input type="text"
-                       id="dpi"
-                       name="dpi"
-                       maxlength="15"
-                       value="<%= evento ? perfil.getDpi() : ""%>"
-                       required>
+                <input type="text" id="telefono" name="telefono" maxlength="15" value="<%= evento ? perfil.getTelefono() : ""%>" required>
 
             </div>
 
-            <br>
-
+             
             <div>
 
-                <label for="nit">
-                    NIT:
-                </label>
+                <label for="direccion">Dirección:</label>
 
-                <input type="text"
-                       id="nit"
-                       name="nit"
-                       maxlength="15"
-                       value="<%= evento ? perfil.getNit() : ""%>"
-                       required>
+                <input type="text" id="direccion" name="direccion" maxlength="100" value="<%= evento ? perfil.getDireccion() : ""%>" required>
 
             </div>
-
             <br>
-
-            <div>
-
-                <label for="telefono">
-                    Teléfono:
-                </label>
-
-                <input type="text"
-                       id="telefono"
-                       name="telefono"
-                       maxlength="15"
-                       value="<%= evento ? perfil.getTelefono() : ""%>"
-                       required>
-
-            </div>
-
-            <br>
-
-            <div>
-
-                <label for="direccion">
-                    Dirección:
-                </label>
-
-                <input type="text"
-                       id="direccion"
-                       name="direccion"
-                       maxlength="100"
-                       value="<%= evento ? perfil.getDireccion() : ""%>"
-                       required>
-
-            </div>
-
-            <br>
-
+           
             <% if (evento) {%>
 
             <div>
 
-                <label>
-                    Rol:
-                </label>
+                <label> Rol: </label>
 
-                <span>
-                    <%= usuario.getRol()%>
-                </span>
+                <span><%= usuario.getRol()%></span>               
 
-                <p>
-                    El rol no puede modificarse desde este formulario.
-                </p>
-
-            </div>
-
-            <br>
+            </div> 
 
             <div>
 
-                <label>
-                    Estado:
-                </label>
+                <label>Estado:</label>
 
-                <span>
-                    <%= usuario.getEstado()%>
-                </span>
+                <span><%= usuario.getEstado()%></span>
 
-                <p>
-                    El estado se modifica mediante la opción
-                    correspondiente.
-                </p>
-
+                 
             </div>
 
-            <% } else { %>
-
-            <p>
-                La cuenta será registrada como
-                <strong>usuario</strong> y quedará
-                <strong>activa</strong>.
-            </p>
-
-            <% }%>
+            <%    }%>
 
             <br>
 

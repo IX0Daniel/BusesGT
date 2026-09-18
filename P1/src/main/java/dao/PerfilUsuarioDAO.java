@@ -129,6 +129,26 @@ public class PerfilUsuarioDAO {
             ps.executeUpdate();
         }
     }
+    
+    
+    
+    
+    public void actualizarPerfil(PerfilUsuario perfil, Connection conexion) throws SQLException {
+        String sql = " UPDATE perfil_usuario SET dpi = ?, nit = ?, telefono = ?, direccion = ?, nombre_completo = ? WHERE correo = ? ";
+        try (PreparedStatement ps = conexion.prepareStatement(sql)) {
+            ps.setString(1, perfil.getDpi());
+            ps.setString(2, perfil.getNit());
+            ps.setString(3, perfil.getTelefono());
+            ps.setString(4, perfil.getDireccion());
+            ps.setString(5, perfil.getNombreCompleto());
+            ps.setString(6, perfil.getCorreo());
+            ps.executeUpdate();
+        }
+    }
+
+    
+    
+    
 
     public void actualizarSaldo(String correo, double saldo)
             throws SQLException {

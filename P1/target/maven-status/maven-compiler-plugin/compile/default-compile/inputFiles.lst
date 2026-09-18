@@ -10,6 +10,7 @@
 /home/dz/NetBeansProjects/BusesGT/P1/src/main/java/dao/ViajeDAO.java
 /home/dz/NetBeansProjects/BusesGT/P1/src/main/java/dao/ViajeRegularDAO.java
 /home/dz/NetBeansProjects/BusesGT/P1/src/main/java/database/ConexionDB.java
+/home/dz/NetBeansProjects/BusesGT/P1/src/main/java/dto/ChoferDTO.java
 /home/dz/NetBeansProjects/BusesGT/P1/src/main/java/dto/PerfilUsuarioDTO.java
 /home/dz/NetBeansProjects/BusesGT/P1/src/main/java/main/p1/JakartaRestConfiguration.java
 /home/dz/NetBeansProjects/BusesGT/P1/src/main/java/main/p1/resources/JakartaEE11Resource.java
@@ -30,7 +31,10 @@
 /home/dz/NetBeansProjects/BusesGT/P1/src/main/java/servicio/UsuarioService.java
 /home/dz/NetBeansProjects/BusesGT/P1/src/main/java/servicio/ViajeService.java
 /home/dz/NetBeansProjects/BusesGT/P1/src/main/java/servlet/BusServlet.java
+/home/dz/NetBeansProjects/BusesGT/P1/src/main/java/servlet/ChoferServlet.java
 /home/dz/NetBeansProjects/BusesGT/P1/src/main/java/servlet/ClienteServlet.java
+/home/dz/NetBeansProjects/BusesGT/P1/src/main/java/servlet/LoginServlet.java
+/home/dz/NetBeansProjects/BusesGT/P1/src/main/java/servlet/MenuServlet.java
 /home/dz/NetBeansProjects/BusesGT/P1/src/main/java/servlet/RutaServlet.java
 /home/dz/NetBeansProjects/BusesGT/P1/src/main/java/servlet/SucursalSevlet.java
 /home/dz/NetBeansProjects/BusesGT/P1/src/main/java/servlet/UsuarioServlet.java

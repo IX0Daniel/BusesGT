@@ -38,8 +38,7 @@ public class UsuarioServlet extends HttpServlet {
 
             if (accion == null) {
 
-                request.setAttribute("usuarios", usuarioService.obtenerTodo());
-
+                request.setAttribute("usuarios", usuarioService.obtenerPerfiles());
                 request.getRequestDispatcher("/Usuario/listar.jsp").forward(request, response);
 
             } else if ("nuevo".equals(accion)) {
@@ -49,11 +48,8 @@ public class UsuarioServlet extends HttpServlet {
             } else if ("editar".equals(accion)) {
 
                 String correo = request.getParameter("correo");
-
                 Usuario usuario = usuarioService.buscarPorCorreo(correo);
-
                 PerfilUsuario perfil = perfilService.buscarPorCorreo(correo);
-
                 request.setAttribute("usuario", usuario);
                 request.setAttribute("perfil", perfil);
 
@@ -70,15 +66,14 @@ public class UsuarioServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         request.setCharacterEncoding("UTF-8");
-
         String accion = request.getParameter("accion");
 
         try {
 
             if ("crear".equals(accion)) {
 
-                Usuario usuario = obtenerUsuario(request);
-                PerfilUsuario perfil = obtenerPerfil(request);
+                Usuario usuario = objetoUsuario(request);
+                PerfilUsuario perfil = objetoPerfil(request);
 
                 usuarioService.registrar(usuario, perfil);
 
@@ -124,7 +119,7 @@ public class UsuarioServlet extends HttpServlet {
         }
     }
 
-    private Usuario obtenerUsuario(HttpServletRequest request) {
+    private Usuario objetoUsuario(HttpServletRequest request) {
 
         Usuario usuario = new Usuario();
 
@@ -132,10 +127,6 @@ public class UsuarioServlet extends HttpServlet {
 
         usuario.setContraseña(request.getParameter("contraseña"));
 
-        /*
-         * Los usuarios que se registran desde el formulario
-         * comienzan como usuarios normales.
-         */
         usuario.setRol("usuario");
 
         usuario.setEstado("activo");
@@ -143,7 +134,7 @@ public class UsuarioServlet extends HttpServlet {
         return usuario;
     }
 
-    private PerfilUsuario obtenerPerfil(HttpServletRequest request) {
+    private PerfilUsuario objetoPerfil(HttpServletRequest request) {
 
         PerfilUsuario perfil = new PerfilUsuario();
 

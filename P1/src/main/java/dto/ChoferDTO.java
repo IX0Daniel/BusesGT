@@ -1,39 +1,41 @@
-package model;
+package dto;
 
 /**
  * @author dz
  */
-public class Chofer {
+public class ChoferDTO {
     
-     
-    
-    private String correo; 
-    private String noLicencia; 
-    private String rutaFoto; 
+    private String correo;
+    private String nombreCompleto;
+    private String noLicencia;
+    private String rutaFoto;
     private String tipoLicencia;
-    private String fechaVencimiento; 
-    private double salario; 
-    private int codigoSucursal;
+    private String fechaVencimiento;
+    private double salario;
+    private String nombreSucursal;
+    private String estado;
 
-    public Chofer(String correo, String noLicencia, String rutaFoto, String tipoLicencia, String fechaVencimiento, double salario, int codigoSucursal) {
-        this.correo = correo;
-        this.noLicencia = noLicencia;
-        this.rutaFoto = rutaFoto;
-        this.tipoLicencia = tipoLicencia;
-        this.fechaVencimiento = fechaVencimiento;
-        this.salario = salario;
-        this.codigoSucursal = codigoSucursal;
+    public ChoferDTO() {
     }
 
-    public Chofer() {
-    }
-
+    
+    
+    
+    
     public String getCorreo() {
         return correo;
     }
 
     public void setCorreo(String correo) {
         this.correo = correo;
+    }
+
+    public String getNombreCompleto() {
+        return nombreCompleto;
+    }
+
+    public void setNombreCompleto(String nombreCompleto) {
+        this.nombreCompleto = nombreCompleto;
     }
 
     public String getNoLicencia() {
@@ -76,16 +78,23 @@ public class Chofer {
         this.salario = salario;
     }
 
-    public int getCodigoSucursal() {
-        return codigoSucursal;
+    public String getNombreSucursal() {
+        return nombreSucursal;
     }
 
-    public void setCodigoSucursal(int codigoSucursal) {
-        this.codigoSucursal = codigoSucursal;
+    public void setNombreSucursal(String nombreSucursal) {
+        this.nombreSucursal = nombreSucursal;
     }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
     
-    
-     
     
     
 }

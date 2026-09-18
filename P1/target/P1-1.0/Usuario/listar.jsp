@@ -4,6 +4,7 @@
     Author     : dz
 --%>
 
+<%@page import="dto.PerfilUsuarioDTO"%>
 <%@page import="model.PerfilUsuario"%>
 <%@page import="model.Usuario"%>
 <%@page import="java.util.List"%>
@@ -12,14 +13,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-
-    
-    
-
-
-
+        <title>Usuarios del Sistema</title>
+    </head> 
 
     <body>
 
@@ -32,10 +27,8 @@
         <br><br>
 
         <%
-            List<Usuario> usuarios
-                    = (List<Usuario>) request.getAttribute("usuarios");
-
-            PerfilUsuario perfil;
+            List<PerfilUsuarioDTO> usuarios = (List<PerfilUsuarioDTO>) request.getAttribute("usuarios");
+ 
         %>
 
         <table border="1">
@@ -46,6 +39,7 @@
                     <th>Nombre</th>
                     <th>DPI</th>
                     <th>Teléfono</th>
+                    <th>Direccion</th>
                     <th>Rol</th>
                     <th>Estado</th>
                     <th>Saldo</th>
@@ -56,70 +50,63 @@
             <tbody>
 
                 <%
-                    for (Usuario usuario : usuarios) {
+                    for (PerfilUsuarioDTO usuario : usuarios) {
 
-                        perfil = new PerfilUsuario();
+                       
                 %>
 
                 <tr>
 
                     <td>
-                        <%= usuario.getCorreo()%>
+                        <%= usuario.getPerfil().getCorreo()%>
+                    </td>
+                    <td>                                                
+                        <%= usuario.getPerfil().getNombreCompleto()%>                         
                     </td>
 
                     <td>
-                        -
+                        <%= usuario.getPerfil().getDpi()%>                                                                                           
+                    </td>
+                    <td>                                                
+                        <%= usuario.getPerfil().getTelefono()%>   
+
+ 
+                    </td>
+                    
+                    <td>                                                
+                        <%= usuario.getPerfil().getDireccion() %>   
+
+ 
+                    </td>
+                    
+                    <td>
+                        <%= usuario.getUsuario().getRol()%>
+                    </td>
+                    <td>
+                        <%= usuario.getUsuario().getEstado()%>
+                    </td>
+
+                    <td> 
+                        <%= usuario.getPerfil().getSaldo()%>
                     </td>
 
                     <td>
-                        -
-                    </td>
 
-                    <td>
-                        -
-                    </td>
-
-                    <td>
-                        <%= usuario.getRol()%>
-                    </td>
-
-                    <td>
-                        <%= usuario.getEstado()%>
-                    </td>
-
-                    <td>
-                        -
-                    </td>
-
-                    <td>
-
-                        <a href="${pageContext.request.contextPath}/usuarios?accion=editar&correo=<%= usuario.getCorreo()%>">
+                        <a href="${pageContext.request.contextPath}/usuarios?accion=editar&correo=<%= usuario.getUsuario().getCorreo()%>">
                             Editar
                         </a>
 
-                        <form method="post"
-                              action="${pageContext.request.contextPath}/usuarios"
-                              style="display:inline;">
+                        <form method="post" action="${pageContext.request.contextPath}/usuarios" style="display:inline;">
 
-                            <input type="hidden"
-                                   name="accion"
-                                   value="cambiarEstado">
+                            <input type="hidden" name="accion" value="cambiarEstado">
 
-                            <input type="hidden"
-                                   name="correo"
-                                   value="<%= usuario.getCorreo()%>">
+                            <input type="hidden" name="correo" value="<%= usuario.getPerfil().getCorreo()%>">
 
-                            <input type="hidden"
-                                   name="estado"
-                                   value="<%= usuario.getEstado().equals("activo")
-                                       ? "inhabilitado"
-                                       : "activo"%>">
+                            <input type="hidden" name="estado" value="<%= usuario.getUsuario().getEstado().equals("activo") ? "inhabilitado" : "activo"%>">
 
                             <button type="submit">
 
-                                <%= usuario.getEstado().equals("activo")
-                                        ? "Inhabilitar"
-                                        : "Activar"%>
+                                <%= usuario.getUsuario().getEstado().equals("activo") ? "Inhabilitar" : "Activar"%>
 
                             </button>
 
@@ -138,7 +125,7 @@
         </table>
 
     </body>
-       
+
 </html>
 
 
